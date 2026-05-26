@@ -11,14 +11,10 @@ export default function ConnectNow() {
             <div className="container relative z-10 flex flex-col items-center px-4 text-center md:px-6">
 
                 <div className="relative mb-6 inline-block md:mb-8">
-                    <h2 className="text-center font-bold tracking-tight text-neutral-900">
-                        <span className="block text-[clamp(1.75rem,4vw,2.65rem)] leading-[1.1] md:text-[clamp(1.9rem,3.5vw,2.85rem)]">
-                            <span className="text-[#22c55e]">Ready</span>{" "}
-                            <span className="text-neutral-900">To</span>
-                        </span>
-                        <span className="mt-0.5 block text-[clamp(2.1rem,6vw,3.75rem)] leading-[1.05] md:mt-1 md:text-[clamp(2.35rem,5.5vw,4.25rem)]">
-                            Collaborate
-                        </span>
+                    <h2 className="text-center font-display text-[clamp(2rem,5.5vw,3.75rem)] font-bold uppercase leading-[1.05] tracking-tight text-neutral-900">
+                        Ready to
+                        <br />
+                        <span className="text-[#22c55e]">Collaborate</span>
                     </h2>
 
                     <div className="absolute bottom-0 right-0 z-20 translate-x-[12%] translate-y-[40%] rotate-[-6deg] transform sm:translate-x-1/4 md:bottom-1 md:right-0 md:translate-x-0 md:translate-y-1/2 lg:-right-4 xl:-right-12">

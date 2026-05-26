@@ -152,10 +152,9 @@ export default function BrandsSection() {
                         </span>
                     </div>
 
-                    <h2 className="mx-auto max-w-5xl font-haas text-3xl font-bold uppercase leading-[1.1] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+                    <h2 className="mx-auto max-w-5xl font-display text-[clamp(2rem,5.5vw,3.75rem)] font-bold uppercase leading-[1.05] tracking-tight text-white">
                         We are happy to work with{" "}
-                        <br className="hidden md:block" />
-                        global <span className="text-green-500">largest brands</span>
+                        <span className="text-[#22c55e]">global largest brands</span>
                     </h2>
                 </div>
 

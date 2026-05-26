@@ -121,10 +121,8 @@ export default function OurStory() {
                         <h2 className="font-sans text-[clamp(2.5rem,5.5vw,5.5rem)] font-bold uppercase leading-[0.9] tracking-tight text-black">
                             A LEGACY OF
                             <br />
-                            TECHNOLOGY, INNOVATION,
-                            <span className="block font-serif normal-case italic text-[#22c55e] md:inline md:pl-4">
-                                And Trust
-                            </span>
+                            TECHNOLOGY, INNOVATION,{" "}
+                            <span className="text-[#22c55e]">AND TRUST</span>
                         </h2>
 
                         {/* Small floating image overlapping the text */}

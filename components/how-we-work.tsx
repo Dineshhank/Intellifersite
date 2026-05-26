@@ -303,7 +303,7 @@ export default function HowWeWork() {
             </span>
           </div>
           <h2 className="font-display text-[clamp(2rem,5.5vw,3.75rem)] font-bold uppercase leading-[1.05] tracking-tight text-white">
-            How we work
+            How we <span className="text-[#22c55e]">work</span>
           </h2>
       </header>
 
