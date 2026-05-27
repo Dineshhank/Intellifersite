@@ -10,7 +10,8 @@ export default function ConnectSection() {
   return (
     <footer className="animate-in fade-in fill-mode-forwards duration-700">
       <div className="rounded-t-[40px] bg-[#06122B] sm:rounded-t-[44px] lg:rounded-t-[48px]">
-        <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 text-left sm:px-10 sm:pb-10 sm:pt-20 lg:px-16 lg:pb-12 lg:pt-24 xl:pt-28">
+        {/* Match hero/navbar/services alignment */}
+        <div className="mx-auto max-w-[1400px] px-6 pb-8 pt-16 text-left sm:px-10 sm:pb-10 sm:pt-20 lg:px-10 lg:pb-12 lg:pt-24 xl:pt-28">
           {/* Heading row: left title, social top-right on large screens */}
           <div className="flex flex-col items-start gap-8 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
             <h2 className="font-sans">

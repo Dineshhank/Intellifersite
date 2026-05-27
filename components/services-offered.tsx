@@ -9,7 +9,7 @@ import Image from "next/image";
 const tabs = [
   {
     label: "Intellifer Document Processing",
-    image: "/service-1.png",
+    image: "/IDPP.png",
     title: "Intelligent Document Processing",
     description:
       "Empower your business with intelligent document workflows, ensuring seamless automation from upload to final approval. Optimize efficiency and compliance with a future-ready document management system.",

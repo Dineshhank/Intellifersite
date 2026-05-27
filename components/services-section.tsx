@@ -90,14 +90,15 @@ export default function ServicesSection() {
 
   return (
     <section className="bg-[#F5F2ED] pb-0 pt-20 font-sans antialiased md:pt-24 lg:pt-28">
-      <div className="mx-auto max-w-7xl px-6 md:px-10 lg:px-16">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-14 xl:gap-20">
-          <h2 className="max-w-xl text-[2.5rem] font-bold leading-[1.02] tracking-tight text-neutral-900 sm:text-5xl md:text-[3.25rem] lg:text-[3.5rem]">
+      {/* Match hero/navbar alignment */}
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 lg:px-10">
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between lg:gap-14 xl:gap-20">
+          <h2 className="max-w-xl shrink-0 text-[2.5rem] font-bold leading-[1.02] tracking-tight text-neutral-900 sm:text-5xl md:text-[3.25rem] lg:text-[3.5rem]">
             <span className="block">Software</span>
             <span className="block">Development</span>
             <span className="block text-[#22c55e]">Services</span>
           </h2>
-          <p className="max-w-lg text-left text-[0.9375rem] leading-[1.75] text-neutral-600 sm:text-base lg:max-w-[34rem] lg:pt-2 lg:text-[1.05rem] lg:leading-[1.65] xl:max-w-[36rem]">
+          <p className="max-w-lg text-left text-[0.9375rem] leading-[1.75] text-neutral-600 sm:text-base lg:ml-auto lg:max-w-[34rem] lg:pt-2 lg:text-right lg:text-[1.05rem] lg:leading-[1.65] xl:max-w-[36rem]">
             We offer tailor-made software development services for startups,
             medium-sized companies, and large enterprises,{" "}
             <br className="hidden md:inline" />

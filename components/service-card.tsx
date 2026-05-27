@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   ArrowDown,
   Building2,
@@ -189,7 +190,19 @@ function WebMobilePanel() {
 }
 
 function ServiceGraphic({ tabIndex }: { tabIndex: number }) {
-  if (tabIndex === 0) return <IdpWorkflowPanel />;
+  if (tabIndex === 0)
+    return (
+      <div className="relative h-full w-full">
+        {/* Use provided IDPP image from public folder */}
+        <Image
+          src="/IDPP.png"
+          alt="Intelligent Document Processing"
+          fill
+          priority
+          className="object-contain"
+        />
+      </div>
+    );
   if (tabIndex === 1) return <FacilityPanel />;
   return <WebMobilePanel />;
 }
@@ -207,7 +220,12 @@ export default function ServiceCard({ activeIndex, tabs }: ServiceCardProps) {
         aria-label="Service illustration"
       >
         <div className="overflow-hidden rounded-3xl">
-          <div className="aspect-square w-full">
+          {/* IDPP.png is portrait (3:4). Match aspect ratio only for the first tab. */}
+          <div
+            className={
+              activeIndex === 0 ? "aspect-[3/4] w-full" : "aspect-square w-full"
+            }
+          >
             <div className="h-full w-full">
               <ServiceGraphic tabIndex={activeIndex} />
             </div>

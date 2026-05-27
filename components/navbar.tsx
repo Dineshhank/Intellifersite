@@ -160,7 +160,7 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${scrolled ? "border-b border-black/[0.06] bg-[#F5F3EE]/95 backdrop-blur-md" : "bg-transparent"
           }`}
       >
-        <div className="relative mx-auto flex h-[3.25rem] max-w-7xl items-center px-6 sm:h-14 lg:px-10">
+        <div className="relative mx-auto flex h-[3.25rem] max-w-[1400px] items-center px-6 sm:h-14 lg:px-10">
           {/* Logo */}
           <div className="flex flex-1 items-center justify-start">
             <Link href="/" className="flex items-center gap-2">
