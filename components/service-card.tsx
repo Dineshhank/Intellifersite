@@ -3,15 +3,11 @@
 import Image from "next/image";
 import {
   ArrowDown,
-  Building2,
   CheckCircle2,
   Layers,
   Link2,
   Monitor,
   PenLine,
-  Smartphone,
-  Tablet,
-  Wrench,
 } from "lucide-react";
 
 export type ServiceDetail = {
@@ -134,57 +130,26 @@ function IdpWorkflowPanel() {
 
 function FacilityPanel() {
   return (
-    <div className="relative flex h-full min-h-[300px] flex-col justify-between overflow-hidden bg-gradient-to-br from-[#2a4a73] via-[#1a3557] to-[#0c1f38] p-6 sm:min-h-[340px] sm:p-7 md:min-h-0 md:p-8">
-      <div className="pointer-events-none absolute -right-6 top-6 h-44 w-44 rounded-full bg-[#22c55e]/20 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 left-0 h-32 w-full bg-[radial-gradient(ellipse_at_bottom,rgba(59,130,246,0.2),transparent_65%)]" />
-      <div className="relative z-10 rounded-xl border border-white/15 bg-white/[0.07] p-4 shadow-[0_0_32px_-8px_rgba(34,197,94,0.25)] backdrop-blur-sm">
-        <Building2 className="h-10 w-10 text-white" strokeWidth={1.1} />
-        <div className="mt-4 space-y-2">
-          {[72, 88, 54, 68].map((w, i) => (
-            <div
-              key={i}
-              className="h-2 rounded-full bg-white/15 shadow-[0_0_10px_rgba(255,255,255,0.08)]"
-              style={{ width: `${w}%` }}
-            />
-          ))}
-        </div>
-      </div>
-      <div className="relative z-10 flex items-center gap-3 rounded-xl border border-white/15 bg-white/[0.06] p-3 sm:p-4">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-[#22c55e]/45 bg-[#22c55e]/18 shadow-[0_0_20px_rgba(34,197,94,0.25)]">
-          <Wrench className="h-5 w-5 text-[#22c55e]" strokeWidth={1.35} />
-        </div>
-        <div className="min-w-0 flex-1 space-y-2">
-          <div className="h-2 w-full max-w-[85%] rounded bg-white/25" />
-          <div className="h-2 w-full max-w-[55%] rounded bg-white/12" />
-        </div>
-      </div>
+    <div className="relative h-full w-full">
+      <Image
+        src="/FacilityMgnt.png"
+        alt="Facility Management"
+        fill
+        className="object-contain"
+      />
     </div>
   );
 }
 
 function WebMobilePanel() {
   return (
-    <div className="relative flex h-full min-h-[300px] items-center justify-center overflow-hidden bg-gradient-to-br from-[#3d4f9a] via-[#2e3678] to-[#12183a] p-6 sm:min-h-[340px] sm:p-8 md:min-h-0 md:p-10">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(255,255,255,0.18),transparent_55%)]" />
-      <div className="pointer-events-none absolute bottom-0 left-1/2 h-40 w-[90%] -translate-x-1/2 bg-[radial-gradient(ellipse_at_bottom,rgba(99,102,241,0.35),transparent_70%)] blur-xl" />
-      <div className="relative z-10 w-full max-w-[20rem] sm:max-w-[22rem]">
-        <div className="rounded-2xl border border-white/20 bg-white/[0.08] px-6 py-8 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.45),0_0_40px_-10px_rgba(129,140,248,0.4)] sm:px-8 sm:py-10">
-          <div className="flex items-end justify-center gap-4 sm:gap-5">
-            <div className="flex flex-col items-center gap-2">
-              <div className="rounded-lg border border-white/35 bg-white/[0.06] p-2 shadow-[0_0_20px_rgba(255,255,255,0.12)]">
-                <Monitor className="h-8 w-8 text-white sm:h-10 sm:w-10" strokeWidth={1.2} />
-              </div>
-              <div className="h-1 w-12 rounded-full bg-white/25" />
-            </div>
-            <div className="rounded-lg border border-white/35 bg-white/[0.06] p-2.5 shadow-[0_0_20px_rgba(255,255,255,0.12)]">
-              <Tablet className="h-9 w-9 text-white sm:h-11 sm:w-11" strokeWidth={1.2} />
-            </div>
-            <div className="rounded-lg border border-white/35 bg-white/[0.06] p-3 shadow-[0_0_24px_rgba(255,255,255,0.15)]">
-              <Smartphone className="h-10 w-10 text-white sm:h-12 sm:w-12" strokeWidth={1.2} />
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="relative h-full w-full">
+      <Image
+        src="/CustomWebMobileDev.png"
+        alt="Custom Web and Mobile App Development"
+        fill
+        className="object-contain"
+      />
     </div>
   );
 }
@@ -220,12 +185,8 @@ export default function ServiceCard({ activeIndex, tabs }: ServiceCardProps) {
         aria-label="Service illustration"
       >
         <div className="overflow-hidden rounded-3xl">
-          {/* IDPP.png is portrait (3:4). Match aspect ratio only for the first tab. */}
-          <div
-            className={
-              activeIndex === 0 ? "aspect-[3/4] w-full" : "aspect-square w-full"
-            }
-          >
+          {/* Match all service images with the same portrait card ratio as IDP */}
+          <div className="aspect-[3/4] w-full">
             <div className="h-full w-full">
               <ServiceGraphic tabIndex={activeIndex} />
             </div>

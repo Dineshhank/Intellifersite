@@ -4,14 +4,12 @@ const caseStudies = [
   {
     title: "Document Extraction and management System",
     tags: "AI/ML, Automation",
-    image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=960&q=80",
+    image: "/Document Extraction.png",
   },
   {
     title: "Document Lifecycle & Approval Management",
     tags: "Cloud, DevOps",
-    image:
-      "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=960&q=80",
+    image: "/Document Lifecycle.png",
   },
   {
     title: "Business Intelligence and Data Analytics",

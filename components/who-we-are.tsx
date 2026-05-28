@@ -5,7 +5,11 @@ import NextImage from "next/image";
 import { ArrowRight } from "lucide-react";
 import gsap from "gsap";
 
-const CARD_IMAGE = "/herobottomimage.jpg";
+const CARD_IMAGES = {
+  digitalTwin: "/Digital twin.png",
+  digitalTransformation: "/digital transformation.png",
+  ai: "/AIII.png",
+} as const;
 
 /** Shared card size — compact so cards stay clear of centered copy */
 const CARD_CLASS =
@@ -16,19 +20,23 @@ function FloatingCard({
   rotateClass,
   zClass,
   animRef,
+  imageSrc,
+  imageAlt,
 }: {
   positionClass: string;
   rotateClass: string;
   zClass: string;
   animRef: React.RefObject<HTMLDivElement | null>;
+  imageSrc: string;
+  imageAlt: string;
 }) {
   return (
     <div className={`absolute ${positionClass} ${zClass}`}>
       <div className={rotateClass}>
         <div ref={animRef} className={`${CARD_CLASS} will-change-transform`}>
           <NextImage
-            src={CARD_IMAGE}
-            alt=""
+            src={imageSrc}
+            alt={imageAlt}
             fill
             className="object-cover"
             sizes="170px"
@@ -90,6 +98,8 @@ export default function WhoWeAre() {
           rotateClass="-rotate-[12deg]"
           zClass="z-0"
           animRef={topRightAnimRef}
+          imageSrc={CARD_IMAGES.digitalTwin}
+          imageAlt="Digital twin"
         />
 
         {/* Bottom left — clear of paragraph */}
@@ -98,6 +108,8 @@ export default function WhoWeAre() {
           rotateClass="rotate-[12deg]"
           zClass="z-0"
           animRef={bottomLeftAnimRef}
+          imageSrc={CARD_IMAGES.digitalTransformation}
+          imageAlt="Digital transformation"
         />
 
         {/* Bottom right — tucked to corner */}
@@ -106,6 +118,8 @@ export default function WhoWeAre() {
           rotateClass="-rotate-[8deg]"
           zClass="z-0"
           animRef={bottomRightAnimRef}
+          imageSrc={CARD_IMAGES.ai}
+          imageAlt="AI"
         />
       </div>
 

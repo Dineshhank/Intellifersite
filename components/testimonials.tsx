@@ -4,31 +4,26 @@ import Image from "next/image";
 import BrandLogoGrid from "@/components/brand-logo-grid";
 import { BRAND_LOGOS } from "@/lib/brand-logos";
 
-const AVATARS = [
-  "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&crop=faces",
-  "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=faces",
-  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=faces",
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=faces",
-];
+const TESTIMONIAL_BRAND_CIRCLES = BRAND_LOGOS.slice(0, 4);
 
 const testimonials = [
   {
     text: "Intellifer proved to be a professional service provider from the outset. We appreciate their proactive approach and ability to suggest improvements to a prospective solution on both architectural and business levels.",
-    company: "Indian Defense",
+    company: "Indian Defence",
     location: "INDIA",
-    avatar: AVATARS[0],
+    avatar: "/brands/IndianDefence.png",
   },
   {
     text: "We count on Intellifer for professional support in delivering our project. The team is supportive and committed during execution and after go-live.",
-    company: "Indian Defense",
-    location: "INDIA",
-    avatar: AVATARS[1],
+    company: "S-Chem",
+    location: "SAUDI ARABIA",
+    avatar: "/brands/Schem.jpeg",
   },
   {
     text: "Intellifer systems has constantly provided quality service for all our projects. Their staff always looks out for our interests and has been key to our growth.",
-    company: "Indian Defense",
-    location: "INDIA",
-    avatar: AVATARS[2],
+    company: "KSB",
+    location: "GERMANY",
+    avatar: "/brands/KSB.jpeg",
   },
 ];
 
@@ -50,13 +45,19 @@ export default function Testimonials() {
 
         <div className="mt-7 flex justify-center">
           <div className="flex -space-x-3">
-            {AVATARS.map((src, i) => (
+            {TESTIMONIAL_BRAND_CIRCLES.map((brand, i) => (
               <div
-                key={src}
+                key={brand.src}
                 className="relative h-11 w-11 overflow-hidden rounded-full border-2 border-[#F9F6F2] bg-neutral-200 md:h-12 md:w-12"
-                style={{ zIndex: AVATARS.length - i }}
+                style={{ zIndex: TESTIMONIAL_BRAND_CIRCLES.length - i }}
               >
-                <Image src={src} alt="" fill className="object-cover" sizes="48px" />
+                <Image
+                  src={brand.src}
+                  alt={`${brand.name} logo`}
+                  fill
+                  className="object-contain p-1"
+                  sizes="48px"
+                />
               </div>
             ))}
           </div>
@@ -76,12 +77,12 @@ export default function Testimonials() {
                 <div className="my-4 h-px w-full shrink-0 bg-neutral-300/70 transition-colors duration-300 group-hover:bg-neutral-200" />
 
                 <div className="flex items-center gap-3">
-                  <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full bg-neutral-200">
+                  <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-neutral-200 bg-white">
                     <Image
                       src={t.avatar}
-                      alt=""
+                      alt={`${t.company} logo`}
                       fill
-                      className="object-cover"
+                      className="object-contain p-1"
                       sizes="40px"
                     />
                   </div>
