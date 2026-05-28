@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { CONTACT_MAILTO } from "@/lib/contact";
 import { usePathname } from "next/navigation";
@@ -8,122 +8,18 @@ import {
   Menu,
   X,
   ArrowRight,
-  ChevronDown,
-  ShoppingBag,
-  Users,
-  TrendingUp,
-  BookOpen,
-  Smartphone,
-  Trophy,
-  Truck,
-  Eye,
-  Shield,
-  Settings,
-  Crosshair,
-  Zap,
 } from "lucide-react";
 import Image from "next/image";
 
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Case Studies", href: "/case-studies" },
   { label: "Careers", href: "/careers" },
-];
-
-const services = [
-  {
-    title: "E-Commerce",
-    description: "Lorem ipsum heading",
-    icon: ShoppingBag,
-    href: "/services/e-commerce",
-    highlight: false,
-  },
-  {
-    title: "HR Tech",
-    description: "Lorem ipsum heading",
-    icon: Users,
-    href: "/services/hr-tech",
-    highlight: false,
-  },
-  {
-    title: "FinTech / AI",
-    description: "Lorem ipsum heading",
-    icon: TrendingUp,
-    href: "/services/fintech-ai",
-    highlight: false,
-  },
-  {
-    title: "Edutech / AI",
-    description: "Lorem ipsum heading",
-    icon: BookOpen,
-    href: "/services/edutech-ai",
-    highlight: false,
-  },
-  {
-    title: "IoT / Mobile Development",
-    description: "Lorem ipsum heading",
-    icon: Smartphone,
-    href: "/services/iot-mobile",
-    highlight: false,
-  },
-  {
-    title: "Sports Tech / AI",
-    description: "Lorem ipsum heading",
-    icon: Trophy,
-    href: "/services/sports-tech-ai",
-    highlight: false,
-  },
-  {
-    title: "Logistics / Supply Chain",
-    description: "Lorem ipsum heading",
-    icon: Truck,
-    href: "/services/logistics",
-    highlight: false,
-  },
-  {
-    title: "Advertising / Computer Vision",
-    description: "Lorem ipsum heading",
-    icon: Eye,
-    href: "/services/advertising-cv",
-    highlight: false,
-  },
-  {
-    title: "Security / Document Management",
-    description: "Lorem ipsum heading",
-    icon: Shield,
-    href: "/services/security",
-    highlight: false,
-  },
-  {
-    title: "Valve Manufacturing / Automation",
-    description: "Lorem ipsum heading",
-    icon: Settings,
-    href: "/services/valve-automation",
-    highlight: false,
-  },
-  {
-    title: "Defense / IoT",
-    description: "Lorem ipsum heading",
-    icon: Crosshair,
-    href: "/services/defense-iot",
-    highlight: false,
-  },
-  {
-    title: "Energy / Industrial IoT",
-    description: "Lorem ipsum heading",
-    icon: Zap,
-    href: "/services/energy-industrial-iot",
-    highlight: false,
-  },
 ];
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -132,27 +28,6 @@ export default function Navbar() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Close on outside click
-  useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (!target.closest(".services-zone")) {
-        setServicesOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, []);
-
-  const openServices = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    setServicesOpen(true);
-  };
-
-  const scheduleClose = () => {
-    closeTimer.current = setTimeout(() => setServicesOpen(false), 120);
-  };
 
   return (
     <>
@@ -196,38 +71,6 @@ export default function Navbar() {
                   }`}
               >
                 About
-              </Link>
-
-              <div
-                className="services-zone relative"
-                onMouseEnter={openServices}
-                onMouseLeave={scheduleClose}
-              >
-                <button
-                  type="button"
-                  className={`flex items-center gap-1 text-sm font-medium transition-colors duration-200 ${pathname.startsWith("/services")
-                    ? "text-black underline decoration-[#22c55e] decoration-2 underline-offset-8"
-                    : "text-neutral-600 hover:text-neutral-900"
-                    }`}
-                  aria-expanded={servicesOpen}
-                  aria-haspopup="true"
-                >
-                  Service
-                  <ChevronDown
-                    className={`h-4 w-4 transition-transform duration-200 ${servicesOpen ? "rotate-180" : "rotate-0"
-                      }`}
-                  />
-                </button>
-              </div>
-
-              <Link
-                href="/case-studies"
-                className={`text-sm font-medium transition-colors duration-200 ${pathname === "/case-studies"
-                  ? "text-black underline decoration-[#22c55e] decoration-2 underline-offset-8"
-                  : "text-neutral-600 hover:text-neutral-900"
-                  }`}
-              >
-                Case Studies
               </Link>
 
               <Link
@@ -280,46 +123,6 @@ export default function Navbar() {
                 </Link>
               ))}
 
-              {/* Mobile Services Accordion */}
-              <div>
-                <button
-                  type="button"
-                  className="flex w-full items-center justify-between text-base font-semibold text-gray-600"
-                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                >
-                  Service
-                  <ChevronDown
-                    className={`h-4 w-4 transition-transform duration-200 ${mobileServicesOpen ? "rotate-180" : ""
-                      }`}
-                  />
-                </button>
-
-                {mobileServicesOpen && (
-                  <div className="mt-3 flex flex-col gap-1 pl-2">
-                    {services.map((service) => {
-                      const Icon = service.icon;
-                      return (
-                        <Link
-                          key={service.title}
-                          href={service.href}
-                          onClick={() => {
-                            setMobileOpen(false);
-                            setMobileServicesOpen(false);
-                          }}
-                          className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors ${service.highlight
-                            ? "bg-[#22c55e] text-white"
-                            : "text-gray-600 hover:bg-[#22c55e] hover:text-white"
-                            }`}
-                        >
-                          <Icon className="h-4 w-4 shrink-0" strokeWidth={1.5} />
-                          {service.title}
-                        </Link>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-
               <Link
                 href={CONTACT_MAILTO}
                 className="mt-4 flex w-full items-center justify-center gap-1.5 rounded-full bg-[#22c55e] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-transform hover:scale-[1.02]"
@@ -335,79 +138,6 @@ export default function Navbar() {
         )}
       </nav>
 
-      {/* ── Services Mega-Menu (fixed, outside nav flow) ── */}
-      <div
-        className={`services-zone fixed left-[10%] top-14 z-40 w-[80%] transition-all duration-200 ${servicesOpen
-          ? "pointer-events-auto translate-y-0 opacity-100"
-          : "pointer-events-none -translate-y-3 opacity-0"
-          }`}
-        onMouseEnter={openServices}
-        onMouseLeave={scheduleClose}
-      >
-        {/* White Card */}
-        <div className="rounded-2xl bg-white shadow-2xl border border-gray-200 overflow-hidden">
-          {/* Header */}
-          <div className="px-8 pt-7 pb-3">
-            <p className="text-base font-semibold text-gray-900 tracking-tight">
-              Software Development Services
-            </p>
-          </div>
-
-          {/* Services Grid — 3 columns */}
-          <div className="grid grid-cols-3 gap-1 px-4 pb-5">
-            {services.map((service) => {
-              const Icon = service.icon;
-              return (
-                <Link
-                  key={service.title}
-                  href={service.href}
-                  onClick={() => setServicesOpen(false)}
-                  className={`group flex items-start gap-4 rounded-xl px-5 py-4 transition-all duration-150 ${service.highlight
-                    ? "bg-[#22c55e]"
-                    : "hover:bg-[#22c55e]"
-                    }`}
-                >
-                  {/* Icon */}
-                  <div
-                    className={`mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-colors ${service.highlight
-                      ? "bg-white/25"
-                      : "bg-gray-100 group-hover:bg-white/25"
-                      }`}
-                  >
-                    <Icon
-                      className={`h-[18px] w-[18px] transition-colors ${service.highlight
-                        ? "text-white"
-                        : "text-gray-500 group-hover:text-white"
-                        }`}
-                      strokeWidth={1.5}
-                    />
-                  </div>
-
-                  {/* Text */}
-                  <div className="min-w-0">
-                    <p
-                      className={`text-sm font-semibold leading-snug transition-colors ${service.highlight
-                        ? "text-white"
-                        : "text-gray-900 group-hover:text-white"
-                        }`}
-                    >
-                      {service.title}
-                    </p>
-                    <p
-                      className={`mt-0.5 text-xs transition-colors ${service.highlight
-                        ? "text-white/75"
-                        : "text-gray-400 group-hover:text-white/75"
-                        }`}
-                    >
-                      {service.description}
-                    </p>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </div>
     </>
   );
 }
