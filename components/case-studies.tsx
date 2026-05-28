@@ -14,8 +14,7 @@ const caseStudies = [
   {
     title: "Business Intelligence and Data Analytics",
     tags: "Analytics, Data",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=960&q=80",
+    image: "/Business Intelligence and Data Analytics.png",
   },
 ];
 

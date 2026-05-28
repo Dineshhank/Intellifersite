@@ -4,6 +4,16 @@ import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { MotionPathPlugin } from "gsap/MotionPathPlugin";
+import {
+  ClipboardList,
+  PencilRuler,
+  FileCheck2,
+  Code2,
+  TestTube2,
+  Rocket,
+  Wrench,
+  type LucideIcon,
+} from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
@@ -45,15 +55,22 @@ const steps = [
   },
 ];
 
-/** Workplace-style icon: green tile + three horizontal bars */
-function StepIcon() {
+const STEP_ICONS: Record<string, LucideIcon> = {
+  PLANNING: ClipboardList,
+  DESIGNING: PencilRuler,
+  DEFINING: FileCheck2,
+  DEVELOPMENT: Code2,
+  TESTING: TestTube2,
+  DEPLOYMENT: Rocket,
+  MAINTENANCE: Wrench,
+};
+
+/** Step-specific icon inside consistent green tile */
+function StepIcon({ title }: { title: string }) {
+  const Icon = STEP_ICONS[title] ?? ClipboardList;
   return (
     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#22c55e] shadow-[0_0_24px_-4px_rgba(34,197,94,0.55)] md:h-14 md:w-14 md:rounded-2xl">
-      <div className="flex flex-col gap-1.5">
-        <span className="h-0.5 w-6 rounded-full bg-white md:w-7" />
-        <span className="h-0.5 w-5 rounded-full bg-white/95 md:w-6" />
-        <span className="h-0.5 w-4 rounded-full bg-white/90 md:w-5" />
-      </div>
+      <Icon className="h-6 w-6 text-white md:h-7 md:w-7" strokeWidth={2} />
     </div>
   );
 }
@@ -393,7 +410,7 @@ export default function HowWeWork() {
                           : "items-start md:flex-row md:items-start"
                       }`}
                     >
-                      <StepIcon />
+                      <StepIcon title={step.title} />
                       <div className={`min-w-0 flex-1 ${isRight ? "text-right" : ""}`}>
                         <h3 className="font-display text-xl font-bold uppercase tracking-wide text-white md:text-2xl">
                           {step.title}

@@ -36,6 +36,20 @@ const TESTIMONIALS = [
     role: "Lead Delivery Person",
     company: "Intellifer",
   },
+  {
+    id: 4,
+    text: "Intellifer has a very positive and supportive work culture where employees are encouraged to learn, collaborate, and grow. The company also provides continuous opportunities for skill development and career growth, which makes the overall experience both rewarding and enjoyable.",
+    name: "Shrinithi",
+    role: "HR",
+    company: "Intellifer",
+  },
+  {
+    id: 5,
+    text: "Working at Intellifer gives a positive work environment, supportive colleagues, and constant learning opportunities, making our workplace truly inspiring.",
+    name: "Prathibha",
+    role: "AI Business Developer",
+    company: "Intellifer",
+  },
 ];
 
 const navBtnClass =
@@ -96,11 +110,11 @@ export default function TestimonialSection() {
             </button>
 
             <div className="min-w-0 flex-1 overflow-hidden" ref={emblaRef}>
-              <div className="flex touch-pan-y gap-4 md:gap-5 lg:gap-6">
+              <div className="flex touch-pan-y -ml-4 md:-ml-5 lg:-ml-6">
                 {TESTIMONIALS.map((item) => (
                   <div
                     key={item.id}
-                    className="min-w-0 shrink-0 grow-0 basis-full md:basis-[calc((100%-1.25rem)/2)] lg:basis-[calc((100%-1.5rem)/2)]"
+                    className="min-w-0 shrink-0 grow-0 basis-full pl-4 md:basis-1/2 md:pl-5 lg:basis-1/2 lg:pl-6"
                   >
                     <article className="relative mx-auto flex h-full max-w-xl flex-col md:mx-0 md:max-w-none">
                       <div className="flex min-h-[280px] flex-1 flex-col overflow-hidden rounded-2xl shadow-[0_10px_40px_-12px_rgba(0,0,0,0.15)] md:min-h-[300px]">

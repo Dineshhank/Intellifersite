@@ -8,12 +8,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const STORY_IMAGES = {
-    left: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=640&h=800&fit=crop",
-    rightTop: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=520&h=650&fit=crop",
-    rightBottom:
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=560&h=700&fit=crop",
-    accent:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=240&h=240&fit=crop&crop=faces",
+    left: "/ourstory1.png",
+    rightTop: "/ourstory2.png",
+    rightBottom: "/ourstory3.png",
 } as const;
 
 export default function OurStory() {

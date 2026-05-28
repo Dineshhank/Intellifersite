@@ -54,4 +54,40 @@ export const TEAM_MEMBERS: TeamMember[] = [
     image:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=128&h=128&fit=crop&crop=faces",
   },
+  {
+    name: "Dinesh",
+    role: "Designer",
+  },
+  {
+    name: "Prathibha",
+    role: "AI Business Developer",
+  },
+  {
+    name: "Shrinithi",
+    role: "HR",
+  },
+  {
+    name: "Shankar",
+    role: "Designer",
+  },
+  {
+    name: "Arumugaraj",
+    role: "Software Engineer 2",
+  },
+  {
+    name: "Swetha",
+    role: "Junior Software Engineer",
+  },
+  {
+    name: "Anusha",
+    role: "Finance Manager",
+  },
+  {
+    name: "Nandhini",
+    role: "QA Engineer",
+  },
+  {
+    name: "Prakash",
+    role: "Software Engineer",
+  },
 ];

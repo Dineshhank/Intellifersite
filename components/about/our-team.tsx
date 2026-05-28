@@ -17,14 +17,14 @@ function TeamCard({
   role: string;
 }) {
   return (
-    <article className="team-card flex w-[10.5rem] shrink-0 flex-col items-center rounded-2xl border border-white/[0.08] bg-[#0a1f38]/95 px-4 py-5 text-center shadow-[0_16px_40px_-20px_rgba(0,0,0,0.5)] backdrop-blur-sm transition-colors duration-300 hover:border-[#22c55e]/30 sm:w-44 md:px-5 md:py-6">
+    <article className="team-card flex h-[13rem] w-[10.5rem] shrink-0 flex-col items-center rounded-2xl border border-white/[0.08] bg-[#0a1f38]/95 px-4 py-5 text-center shadow-[0_16px_40px_-20px_rgba(0,0,0,0.5)] backdrop-blur-sm transition-colors duration-300 hover:border-[#22c55e]/30 sm:h-[14rem] sm:w-44 md:px-5 md:py-6">
       <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-white/20 bg-[#d1d5db] sm:h-16 sm:w-16">
         <User className="h-7 w-7 text-[#6b7280] sm:h-8 sm:w-8" strokeWidth={2} />
       </div>
       <h3 className="mt-4 line-clamp-2 font-display text-sm font-bold leading-snug text-white sm:text-[0.9375rem]">
         {name}
       </h3>
-      <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-slate-400">
+      <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-slate-400">
         {role}
       </p>
     </article>
@@ -37,6 +37,7 @@ const navBtnClass =
 export default function OurTeam() {
   const sectionRef = useRef<HTMLElement>(null);
   const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
     align: "start",
     containScroll: "trimSnaps",
     dragFree: true,
@@ -78,7 +79,7 @@ export default function OurTeam() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden border-t border-white/[0.06] bg-[#06122B] py-20 text-white md:py-28 lg:py-32"
+      className="relative overflow-hidden border-t border-black/[0.06] bg-[#EFECE6] py-20 text-white md:py-28 lg:py-32"
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_45%_at_50%_100%,rgba(34,197,94,0.07),transparent_55%)]" />
 
@@ -90,7 +91,7 @@ export default function OurTeam() {
               Our Team
             </span>
           </div>
-          <h2 className="font-display text-[clamp(2rem,5.5vw,3.75rem)] font-bold uppercase leading-[1.05] tracking-tight text-white">
+          <h2 className="font-display text-[clamp(2rem,5.5vw,3.75rem)] font-bold uppercase leading-[1.05] tracking-tight text-black">
             Built by{" "}
             <span className="text-[#22c55e]">Passionate Minds</span>
           </h2>
@@ -115,13 +116,11 @@ export default function OurTeam() {
               className="min-w-0 flex-1 cursor-grab overflow-hidden active:cursor-grabbing"
               ref={emblaRef}
             >
-              <div className="flex touch-pan-y gap-4 md:gap-5">
+              <div className="flex touch-pan-y -ml-4 md:-ml-5">
                 {TEAM_MEMBERS.map((member) => (
-                  <TeamCard
-                    key={member.name}
-                    name={member.name}
-                    role={member.role}
-                  />
+                  <div key={member.name} className="pl-4 md:pl-5">
+                    <TeamCard name={member.name} role={member.role} />
+                  </div>
                 ))}
               </div>
             </div>
