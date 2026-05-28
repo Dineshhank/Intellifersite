@@ -33,6 +33,16 @@ const steps = [
     description:
       "We validate functionality, performance, and edge cases rigorously—using automated checks and structured QA so launches feel confident.",
   },
+  {
+    title: "DEPLOYMENT",
+    description:
+      "We publish the completed product with controlled rollout and release checks, ensuring deployment concerns are addressed with minimal risk.",
+  },
+  {
+    title: "MAINTENANCE",
+    description:
+      "We provide continuous support to resolve evolving needs and keep the system running reliably under agreed service levels.",
+  },
 ];
 
 /** Workplace-style icon: green tile + three horizontal bars */
@@ -127,8 +137,8 @@ function getCardTargetOnTrack(
   return { targetX, targetY };
 }
 
-/** Ball stops on the center spine, below the full Testing row */
-function getTestingEndTarget(
+/** Ball stops on the center spine, below the full last step row */
+function getLastStepEndTarget(
   trackEl: HTMLElement,
   cardEl: HTMLElement,
   isMobile: boolean
@@ -145,7 +155,7 @@ export default function HowWeWork() {
   const pathDesktopRef = useRef<SVGPathElement>(null);
   const pathMobileRef = useRef<SVGPathElement>(null);
   const ballRef = useRef<HTMLDivElement>(null);
-  const testingCardRef = useRef<HTMLDivElement>(null);
+  const lastStepCardRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const section = sectionRef.current;
@@ -153,14 +163,14 @@ export default function HowWeWork() {
     const ball = ballRef.current;
     const pathDesktop = pathDesktopRef.current;
     const pathMobile = pathMobileRef.current;
-    const testingCard = testingCardRef.current;
+    const lastStepCard = lastStepCardRef.current;
     if (
       !section ||
       !track ||
       !ball ||
       !pathDesktop ||
       !pathMobile ||
-      !testingCard
+      !lastStepCard
     )
       return;
 
@@ -172,12 +182,12 @@ export default function HowWeWork() {
       isMobile: boolean
     ) => {
       const pathLen = activePath.getTotalLength();
-      const testingEnd = getTestingEndTarget(track, testingCard, isMobile);
+      const lastStepEnd = getLastStepEndTarget(track, lastStepCard, isMobile);
       let endProgress = getPathProgressAtPoint(
         activePath,
         track,
-        testingEnd.targetX,
-        testingEnd.targetY
+        lastStepEnd.targetX,
+        lastStepEnd.targetY
       );
       endProgress = Math.min(Math.max(endProgress, 0.94), 1);
 
@@ -189,13 +199,13 @@ export default function HowWeWork() {
       gsap.set(ball, { xPercent: -50, yPercent: -50 });
       gsap.set(cards, { opacity: 0.35, y: 12 });
 
-      const testingRow = testingCard.closest("li") as HTMLElement;
+      const lastStepRow = lastStepCard.closest("li") as HTMLElement;
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: track,
           start: "top center",
-          endTrigger: testingRow,
+          endTrigger: lastStepRow,
           end: "bottom center",
           scrub,
           invalidateOnRefresh: true,
@@ -251,9 +261,9 @@ export default function HowWeWork() {
         }
       });
 
-      /* Ball keeps moving below Testing while the card stays highlighted */
+      /* Ball keeps moving below the final row while the card stays highlighted */
       tl.to(
-        testingCard,
+        lastStepCard,
         { opacity: 1, y: 0, duration: 0.12, ease: "none" },
         0.9
       );
@@ -359,14 +369,14 @@ export default function HowWeWork() {
         <ol className="relative z-10 m-0 list-none space-y-10 p-0 pl-11 md:space-y-0 md:pl-0">
           {steps.map((step, index) => {
             const isRight = index % 2 === 1;
-            const isTesting = step.title === "TESTING";
+            const isLastStep = index === steps.length - 1;
             return (
               <li
                 key={step.title}
                 className="relative min-h-0 md:flex md:min-h-[292px] md:items-center md:py-5 lg:min-h-[300px]"
               >
                 <div
-                  ref={isTesting ? testingCardRef : undefined}
+                  ref={isLastStep ? lastStepCardRef : undefined}
                   className={`work-step-card flex w-full md:max-w-[580px] lg:max-w-[640px] xl:max-w-[720px] ${
                     isRight ? "md:ml-auto md:pl-2 lg:pl-4" : "md:mr-auto md:pr-2 lg:pr-4"
                   } ${isRight ? "text-right" : "text-left"}`}

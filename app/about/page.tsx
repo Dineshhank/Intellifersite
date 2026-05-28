@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "@/components/navbar";
 import AboutHero from "@/components/about-hero";
 import OurStory from "@/components/our-story";
@@ -14,6 +14,27 @@ import Preloader from "@/components/preloader";
 
 export default function AboutPage() {
     const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const html = document.documentElement;
+        const body = document.body;
+
+        const prevHtmlOverflow = html.style.overflow;
+        const prevBodyOverflow = body.style.overflow;
+
+        if (isLoading) {
+            html.style.overflow = "hidden";
+            body.style.overflow = "hidden";
+        } else {
+            html.style.overflow = prevHtmlOverflow || "";
+            body.style.overflow = prevBodyOverflow || "";
+        }
+
+        return () => {
+            html.style.overflow = prevHtmlOverflow || "";
+            body.style.overflow = prevBodyOverflow || "";
+        };
+    }, [isLoading]);
 
     return (
         <main className="relative min-h-screen bg-[#F5F3EE]">

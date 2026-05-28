@@ -1,51 +1,25 @@
 "use client";
 
-import Image from "next/image";
 import { useCallback, useEffect, useRef } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, User } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TEAM_MEMBERS } from "@/lib/team-members";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function getInitials(name: string) {
-  return name
-    .split(" ")
-    .map((part) => part[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-}
-
 function TeamCard({
   name,
   role,
-  image,
 }: {
   name: string;
   role: string;
-  image?: string;
 }) {
   return (
     <article className="team-card flex w-[10.5rem] shrink-0 flex-col items-center rounded-2xl border border-white/[0.08] bg-[#0a1f38]/95 px-4 py-5 text-center shadow-[0_16px_40px_-20px_rgba(0,0,0,0.5)] backdrop-blur-sm transition-colors duration-300 hover:border-[#22c55e]/30 sm:w-44 md:px-5 md:py-6">
-      <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full border-2 border-[#22c55e]/30 bg-[#0d2847] sm:h-16 sm:w-16">
-        {image ? (
-          <Image
-            src={image}
-            alt={name}
-            width={64}
-            height={64}
-            className="h-full w-full object-cover object-center"
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#0d2847] to-[#06122B]">
-            <span className="text-sm font-bold text-[#22c55e] sm:text-base">
-              {getInitials(name)}
-            </span>
-          </div>
-        )}
+      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-white/20 bg-[#d1d5db] sm:h-16 sm:w-16">
+        <User className="h-7 w-7 text-[#6b7280] sm:h-8 sm:w-8" strokeWidth={2} />
       </div>
       <h3 className="mt-4 line-clamp-2 font-display text-sm font-bold leading-snug text-white sm:text-[0.9375rem]">
         {name}
@@ -147,7 +121,6 @@ export default function OurTeam() {
                     key={member.name}
                     name={member.name}
                     role={member.role}
-                    image={member.image}
                   />
                 ))}
               </div>

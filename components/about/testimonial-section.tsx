@@ -1,14 +1,8 @@
 "use client";
 
 import React, { useCallback } from "react";
-import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-
-const PERSON_1 =
-  "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=500&fit=crop&crop=faces";
-const PERSON_2 =
-  "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=500&fit=crop&crop=faces";
 
 const SERVICES = [
   "IOT",
@@ -23,31 +17,24 @@ const SERVICES = [
 const TESTIMONIALS = [
   {
     id: 1,
-    text: "We count on Intellifer system, for professional support in delivering our project. We enjoy the great experience of dealing with a very supportive and committed team during execution and after go",
-    name: "James Bond",
+    text: "Intellifer is built on trust, innovation, and execution excellence. We stay focused on long-term value creation for clients while continuously improving our people and processes.",
+    name: "Yotheshkumar",
     role: "CEO",
-    company: "aramco",
-    image: PERSON_1,
-    companyLogo: "/images/aramco-placeholder.png",
+    company: "Intellifer",
   },
   {
     id: 2,
-    text: "Intellifer systems has constantly provided quality service for all our projects. We've been happy to work with their staff, who are always looking out for our interests and have been a key element in our growth. Glad to have chosen Intellifer Systems for all our outsourcing development needs.",
-    name: "Emma Watson",
-    role: "CEO",
-    company: "Chevron",
-    image: PERSON_2,
-    companyLogo: "/images/chevron-placeholder.png",
+    text: "Working at Intellifer has been a great experience with a supportive team, positive work culture, and continuous opportunities to learn and grow.",
+    name: "Dineshbabu",
+    role: "Senior Software Engineer",
+    company: "Intellifer",
   },
   {
     id: 3,
-    text: "The team at Intellifer demonstrated exceptional skill and dedication. Their innovative approach to problem-solving helped us achieve our goals ahead of schedule.",
-    name: "Robert Downey",
-    role: "CTO",
-    company: "TechCorp",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop&crop=faces",
-    companyLogo: "TechCorp",
+    text: "At Intellifer, delivery is planned with clarity and executed with accountability. The collaboration across teams helps us deliver consistent outcomes on time with quality.",
+    name: "Suriyaprakash",
+    role: "Lead Delivery Person",
+    company: "Intellifer",
   },
 ];
 
@@ -115,21 +102,9 @@ export default function TestimonialSection() {
                     key={item.id}
                     className="min-w-0 shrink-0 grow-0 basis-full md:basis-[calc((100%-1.25rem)/2)] lg:basis-[calc((100%-1.5rem)/2)]"
                   >
-                    <article className="relative mx-auto flex h-full max-w-xl flex-col pt-3 md:mx-0 md:max-w-none md:pt-4">
-                      <div className="absolute -top-2 left-1/2 z-10 w-[6.75rem] -translate-x-1/2 md:-top-3 md:w-[7.75rem]">
-                        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-xl border-[3px] border-white shadow-[0_6px_24px_-6px_rgba(0,0,0,0.2)]">
-                          <Image
-                            src={item.image}
-                            alt={item.name}
-                            fill
-                            className="object-cover object-top"
-                            sizes="(max-width: 768px) 120px, 140px"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="mt-10 flex min-h-[280px] flex-1 flex-col overflow-hidden rounded-2xl shadow-[0_10px_40px_-12px_rgba(0,0,0,0.15)] md:mt-12 md:min-h-[300px]">
-                        <div className="relative flex min-h-[58%] flex-1 flex-col bg-white px-5 pb-5 pt-11 text-left md:px-7 md:pb-6 md:pt-14">
+                    <article className="relative mx-auto flex h-full max-w-xl flex-col md:mx-0 md:max-w-none">
+                      <div className="flex min-h-[280px] flex-1 flex-col overflow-hidden rounded-2xl shadow-[0_10px_40px_-12px_rgba(0,0,0,0.15)] md:min-h-[300px]">
+                        <div className="relative flex min-h-[58%] flex-1 flex-col bg-white px-5 pb-5 pt-7 text-left md:px-7 md:pb-6 md:pt-9">
                           <span
                             className="mb-2 block font-serif text-5xl font-bold leading-none text-[#22c55e] md:text-6xl"
                             aria-hidden
@@ -150,29 +125,9 @@ export default function TestimonialSection() {
                               {item.role}
                             </p>
                           </div>
-                          <div className="flex shrink-0 items-center">
-                            {item.company === "aramco" ? (
-                              <div className="flex items-center gap-2">
-                                <span className="text-xs font-semibold lowercase text-neutral-500 md:text-sm">
-                                  aramco
-                                </span>
-                                <div className="flex h-8 w-8 items-center justify-center rounded bg-blue-600/15">
-                                  <div className="h-3.5 w-3.5 rounded-sm bg-blue-600" />
-                                </div>
-                              </div>
-                            ) : item.company === "Chevron" ? (
-                              <div className="flex h-8 w-10 items-center justify-center">
-                                <div className="flex flex-col">
-                                  <div className="relative z-10 h-4 w-9 bg-[#005596] [clip-path:polygon(0_0,100%_0,50%_100%)]" />
-                                  <div className="-mt-1 h-4 w-9 bg-[#DA291C] [clip-path:polygon(0_0,100%_0,50%_100%)]" />
-                                </div>
-                              </div>
-                            ) : (
-                              <span className="text-sm font-bold text-neutral-800">
-                                {item.company}
-                              </span>
-                            )}
-                          </div>
+                          <span className="text-sm font-bold text-neutral-800">
+                            {item.company}
+                          </span>
                         </div>
                       </div>
                     </article>

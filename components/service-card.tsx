@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect } from "react";
 import {
   ArrowDown,
   CheckCircle2,
@@ -22,6 +23,12 @@ type ServiceCardProps = {
   activeIndex: number;
   tabs: readonly ServiceDetail[];
 };
+
+const SERVICE_IMAGE_SOURCES = [
+  "/IDPP.png",
+  "/FacilityMgnt.png",
+  "/CustomWebMobileDev.png",
+] as const;
 
 /** Enterprise IDP illustration — workflow hierarchy + glow (placeholder art) */
 function IdpWorkflowPanel() {
@@ -174,6 +181,14 @@ function ServiceGraphic({ tabIndex }: { tabIndex: number }) {
 
 export default function ServiceCard({ activeIndex, tabs }: ServiceCardProps) {
   const current = tabs[activeIndex];
+
+  useEffect(() => {
+    // Preload service images so tab switches feel instant.
+    SERVICE_IMAGE_SOURCES.forEach((src) => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, []);
 
   return (
     <div className="mt-10 grid grid-cols-1 items-stretch gap-6 sm:mt-12 md:gap-7 lg:mt-14 lg:grid-cols-[3fr_7fr] lg:gap-8">

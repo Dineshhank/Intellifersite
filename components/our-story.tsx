@@ -125,32 +125,20 @@ export default function OurStory() {
                             <span className="text-[#22c55e]">AND TRUST</span>
                         </h2>
 
-                        {/* Small floating image overlapping the text */}
-                        <div className="story-image absolute -right-4 top-[55%] h-14 w-14 overflow-hidden rounded-full border-[3px] border-white shadow-xl md:-right-8 md:top-[50%] md:h-20 md:w-20 lg:-right-4 lg:h-24 lg:w-24">
-                            <Image
-                                src={STORY_IMAGES.accent}
-                                alt="Team member portrait"
-                                fill
-                                sizes="96px"
-                                className="object-cover"
-                            />
-                        </div>
                     </div>
 
                     {/* Content - Separated paragraphs with grey text */}
                     <div
                         ref={textRef}
-                        className="flex flex-col gap-8 text-center text-base font-medium leading-[1.8] text-[#555] md:text-lg lg:max-w-3xl"
+                        className="flex flex-col gap-9 px-4 text-balance text-center text-[clamp(1rem,1.15vw,1.25rem)] font-semibold leading-[1.95] tracking-[-0.005em] text-[#6A6F78] md:px-8 lg:max-w-[72rem] lg:px-10"
                     >
                         <p>
                             Intellifer Systems is the software and digital solutions division of
                             SD Groups, an organization established in 1989. With decades of
                             experience, we specialize in software development, consulting,
-                            system implementation, and technology integration.
-                        </p>
-                        <p>
-                            Our core focus is on digitization, digitalization, and digital
-                            transformation—helping businesses modernize operations and scale
+                            system implementation, and technology integration. Our core focus is
+                            on digitization, digitalization, and digital
+                            transformation-helping businesses modernize operations and scale
                             through smart technology solutions.
                         </p>
                         <p>
@@ -158,11 +146,9 @@ export default function OurStory() {
                             Fortune-listed companies to defense organizations and growing SMEs.
                             Our approach blends innovation, engineering excellence, and domain
                             expertise to deliver reliable and future-ready digital products.
-                        </p>
-                        <p>
-                            Built on emerging technologies such as Artificial Intelligence,
-                            Machine Learning, and the Internet of Things (IoT), our solutions
-                            enable intelligent, connected, and value-driven ecosystems.
+                            Built on emerging technologies such as Artificial
+                            Intelligence, Machine Learning, and the Internet of Things (IoT), our
+                            solutions enable intelligent, connected, and value-driven ecosystems.
                         </p>
                     </div>
                 </div>
