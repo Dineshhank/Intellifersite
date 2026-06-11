@@ -1,0 +1,50 @@
+/* Hide demo version banner */
+.demo-msg {
+  display: none !important;
+}
+
+html,
+body {
+  background: transparent !important;
+}
+
+#flipbook-container {
+  background: transparent !important;
+}
+
+.flip-book,
+.flip-book .view {
+  background: transparent !important;
+}
+
+/* Side arrows on white brochure card */
+.flip-book .view .fnav a {
+  color: #c8c8c8 !important;
+  text-shadow: none !important;
+}
+
+.flip-book .view .fnav a:hover {
+  color: #9a9a9a !important;
+  text-shadow: none !important;
+}
+
+/* Toolbar always visible, centered */
+.flip-book .controls .fnavbar {
+  opacity: 1 !important;
+  transition: none !important;
+}
+
+.flip-book .controls .ctrl.js-center {
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+}
+
+/* Trim extra controls */
+.flip-book .cmdFastBackward,
+.flip-book .cmdFastForward,
+.flip-book .cmdSave,
+.flip-book .cmdPrint,
+.flip-book .cmdDefaultZoom {
+  display: none !important;
+}

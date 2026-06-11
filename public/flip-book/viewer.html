@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intellifer Brochure</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: transparent;
+      }
+
+      #flipbook-container {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="flipbook-container"></div>
+
+    <script>
+      window.PDFJS_LOCALE = {
+        pdfJsWorker: "/flip-book/js/pdf.worker.js",
+        pdfJsCMapUrl: "/flip-book/cmaps/",
+      };
+    </script>
+    <script src="/flip-book/js/jquery.min.js"></script>
+    <script src="/flip-book/js/three.min.js"></script>
+    <script src="/flip-book/js/html2canvas.min.js"></script>
+    <script src="/flip-book/js/pdf.min.js"></script>
+    <script>
+      window.PDFJS = window.pdfjsDistBuildPdf || window.PDFJS;
+    </script>
+    <script src="/flip-book/flip-book.min.js"></script>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var pdf = params.get("pdf") || "/flip-book/brochure.pdf";
+        var container = document.getElementById("flipbook-container");
+
+        if (!window.jQuery || !window.jQuery.fn.FlipBook) {
+          container.innerHTML =
+            '<p style="color:#b91c1c;padding:24px;font-family:sans-serif;">Unable to load the brochure viewer.</p>';
+          return;
+        }
+
+        window.jQuery(container).FlipBook({
+          pdf: pdf,
+          template: {
+            html: "/flip-book/templates/default-book-view.html",
+            styles: [
+              "/flip-book/css/short-black-book-view.css",
+              "/flip-book/css/intellifer-brochure.css",
+            ],
+            links: [
+              {
+                rel: "stylesheet",
+                href: "/flip-book/css/font-awesome.min.css",
+              },
+            ],
+            script: "/flip-book/js/default-book-view.js",
+          },
+        });
+      })();
+    </script>
+  </body>
+</html>
